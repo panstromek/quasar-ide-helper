@@ -4,10 +4,6 @@ module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
   const apis = fs.readdirSync(apiPath)
 
-  if (!fs.existsSync(appDir)) {
-    fs.mkdirSync(appDir)
-  }
-
   const generators = {
     'component': component,
     'plugin': plugin,
@@ -20,7 +16,7 @@ module.exports = function (appDir) {
   const plugins = []
 
   apis.forEach(name => {
-    const api = require(apiPath + '/' + name)
+    const api = require(`${apiPath}/${name}`)
     if (name.endsWith('.json')) {
       name = name.substring(0, name.length - 5)
     }
