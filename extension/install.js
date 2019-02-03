@@ -6,6 +6,8 @@
 
 const generate = require('./type-generator')
 const generateCss = require('./generateCss')
+const collectApis = require('./collectApis')
+const generateTemplates = require('./generateTemplates')
 
 /**
  *
@@ -14,4 +16,6 @@ const generateCss = require('./generateCss')
 module.exports = function ({ appDir }) {
   generate(appDir)
   generateCss(appDir)
+  const apis = collectApis(`${appDir}/node_modules/quasar/dist/api`)
+  generateTemplates(apis)
 }
