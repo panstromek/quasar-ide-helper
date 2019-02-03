@@ -5,10 +5,13 @@
  */
 
 const generate = require('./type-generator')
+const generateCss = require('./generateCss')
+
 /**
  *
  * @param {{extId, quasarAppVersion, prompts, resolve, appDir}} api
  */
-module.exports = function (api) {
-  generate(api.appDir)
+module.exports = function ({ appDir }) {
+  generate(appDir)
+  generateCss(appDir)
 }

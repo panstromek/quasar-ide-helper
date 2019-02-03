@@ -4,9 +4,8 @@ module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
   const apis = fs.readdirSync(apiPath)
 
-  const targetDir = `${appDir}`
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir)
+  if (!fs.existsSync(appDir)) {
+    fs.mkdirSync(appDir)
   }
 
   const generators = {
@@ -15,7 +14,7 @@ module.exports = function (appDir) {
     'directive': directive
   }
 
-  fs.writeFileSync(`${targetDir}/.quasar-ide-helper.js`,
+  fs.writeFileSync(`${appDir}/.quasar-ide-helper.js`,
     'import Vue from \'vue\'\n')
 
   const plugins = []
@@ -31,10 +30,10 @@ module.exports = function (appDir) {
       })
       return
     }
-    fs.appendFileSync(`${targetDir}/.quasar-ide-helper.js`,
+    fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
       (generators[api.type] || (() => ``))(name, api))
   })
-  fs.appendFileSync(`${targetDir}/.quasar-ide-helper.js`,
+  fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
     `
   /**
    * Quasar plugins injected to prototype:${plugins.map(({ name, api }) => {
@@ -49,11 +48,11 @@ module.exports = function (appDir) {
   Vue.prototype.$q = {
   `)
   plugins.forEach(({ name, api }) => {
-    fs.appendFileSync(`${targetDir}/.quasar-ide-helper.js`,
+    fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
       plugin(name, api))
   })
 
-  fs.appendFileSync(`${targetDir}/.quasar-ide-helper.js`,
+  fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
     `
   }`)
 
@@ -176,15 +175,6 @@ Vue.component('${name}', {
       })
   }
 
-  const cssPath = `${appDir}/node_modules/quasar/dist`
-  const files = fs.readdirSync(cssPath)
-
-  const targetCssFile = `${targetDir}/.quasar-ide-helper.css`
-  fs.writeFileSync(targetCssFile, '')
-  files.forEach(filename => {
-    if (filename.endsWith('.min.css')) {
-      fs.appendFileSync(targetCssFile, fs.readFileSync(`${cssPath}/${filename}`))
-    }
-  })
+  generateCss(appDir, appDir)
 
 }
