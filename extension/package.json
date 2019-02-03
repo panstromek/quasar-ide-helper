@@ -11,7 +11,8 @@
     "npm": ">= 5.6.0",
     "yarn": ">= 1.6.0"
   },
-  "dependencies": {
-    "@quasar/app": "^1.0.0-alpha.14"
+  "devDependencies": {
+    "@quasar/app": "^1.0.0-alpha.14",
+    "eslint": "^5.13.0"
   }
 }

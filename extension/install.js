@@ -17,5 +17,5 @@ module.exports = function ({ appDir }) {
   generate(appDir)
   generateCss(appDir)
   const apis = collectApis(`${appDir}/node_modules/quasar/dist/api`)
-  generateTemplates(apis)
+  generateTemplates(apis, appDir)
 }
