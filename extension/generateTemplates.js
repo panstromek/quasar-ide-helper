@@ -1,5 +1,6 @@
 const fs = require('fs')
 const escape = require('xml-escape')
+const { toCamel, toKebab } = require('./utils/casing')
 /**
  * Generate live templates
  * @param {[{name:String, api: Object}]} apis
@@ -87,12 +88,4 @@ function preTemplate ({ name: rawName, api }) {
       `<${kebabName} ${postProps} />`,
       `Scaffold ${rawName}`,
       postVariables)
-}
-
-function toKebab (i) {
-  return i.replace(/([a-zA-Z])([A-Z])/g, '$1-$2').toLowerCase()
-}
-
-function toCamel (i) {
-  return i.replace(/-([a-z])/g, c => c[1].toUpperCase())
 }
