@@ -7,7 +7,7 @@ const { toCamel, toKebab } = require('./utils/casing')
  * @param {String} targetDir
  */
 module.exports = function (apis, targetDir) {
-  let targetFile = targetDir + '/Quasar.xml'
+  const targetFile = targetDir + '/Quasar.xml'
   fs.writeFileSync(targetFile,
     '<templateSet group="Quasar">\n')
 
