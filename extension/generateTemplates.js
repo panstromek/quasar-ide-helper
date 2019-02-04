@@ -80,7 +80,7 @@ function preTemplate ({ name: rawName, api }) {
   return createTemplate(
     `${name}t`,
     `${kebabName}${preProps}`,
-    `Scaffold ${rawName} pre-template (expand with double tab)`,
+    `Scaffold ${rawName} CSS-like template (expands to HTML after TAB)`,
     preVariables)
     +
     createTemplate(
