@@ -171,6 +171,4 @@ Vue.component('${name}', {
       })
   }
 
-  generateCss(appDir, appDir)
-
 }

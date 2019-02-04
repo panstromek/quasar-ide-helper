@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 /**
  * @param {String} dir
  * @return {[{name:string, api:Object}]} Array of APis
