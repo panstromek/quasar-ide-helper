@@ -1,36 +1,8 @@
 const fs = require('fs')
 const { toCamel } = require('./utils/casing')
 
-module.exports = function (appDir) {
-  const apiPath = `${appDir}/node_modules/quasar/dist/api`
-  const apis = fs.readdirSync(apiPath)
-
-  const generators = {
-    'component': component,
-    'plugin': plugin,
-    'directive': directive
-  }
-
-  fs.writeFileSync(`${appDir}/.quasar-ide-helper.js`,
-    'import Vue from \'vue\'\n')
-
-  const plugins = []
-
-  apis.forEach(name => {
-    const api = require(`${apiPath}/${name}`)
-    if (name.endsWith('.json')) {
-      name = name.substring(0, name.length - 5)
-    }
-    if (api.type === 'plugin') {
-      plugins.push({
-        name, api
-      })
-      return
-    }
-    fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
-      (generators[api.type] || (() => ``))(name, api))
-  })
-  fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
+function generateInjections (targetFile, plugins) {
+  fs.appendFileSync(targetFile,
     `
   /**
    * Quasar plugins injected to prototype:${plugins.map(({ name, api }) => {
@@ -45,14 +17,46 @@ module.exports = function (appDir) {
   Vue.prototype.$q = {
   `)
   plugins.forEach(({ name, api }) => {
-    fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
+    fs.appendFileSync(targetFile,
       plugin(name, api))
   })
 
-  fs.appendFileSync(`${appDir}/.quasar-ide-helper.js`,
+  fs.appendFileSync(targetFile,
     `
   }`)
+}
 
+module.exports = function (appDir) {
+  const apiPath = `${appDir}/node_modules/quasar/dist/api`
+  const apis = fs.readdirSync(apiPath)
+
+  const generators = {
+    'component': component,
+    'plugin': plugin,
+    'directive': directive
+  }
+
+  const targetFile = `${appDir}/.quasar-ide-helper.js`
+  fs.writeFileSync(targetFile,
+    'import Vue from \'vue\'\n')
+
+  const injections = []
+
+  apis.forEach(name => {
+    const api = require(`${apiPath}/${name}`)
+    if (name.endsWith('.json')) {
+      name = name.substring(0, name.length - 5)
+    }
+    if (api.type === 'plugin') {
+      injections.push({
+        name, api
+      })
+      return
+    }
+    fs.appendFileSync(targetFile,
+      (generators[api.type] || (() => ``))(name, api))
+  })
+  generateInjections(targetFile, injections)
 }
 
 function paramDoc (params) {
