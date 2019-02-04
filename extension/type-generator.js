@@ -1,4 +1,5 @@
 const fs = require('fs')
+const { toCamel } = require('./utils/casing')
 
 module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
@@ -166,7 +167,7 @@ Vue.component('${name}', {
       required: true` : ``
 
         return `${propComment(prop)}
-    '${name}': {${VueType}${required}
+    ${toCamel(name)}: {${VueType}${required}
     }`
       })
   }
