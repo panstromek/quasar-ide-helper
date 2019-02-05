@@ -4,6 +4,23 @@ const { generateComponent } = require('./generateComponent')
 const typeComment = require('./utils/comments').typeComment
 const collectApis = require('./collectApis')
 
+function writeComponents (directory, components) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory)
+  }
+  components.forEach(({ api, name }) => fs.writeFileSync(`${directory}/${name}.js`, generateComponent(name, api)))
+
+  fs.writeFileSync(`${directory}/imports.js`, `import Vue from 'vue';`)
+
+  components.forEach(({ api, name }) => {
+    fs.appendFileSync(`${directory}/imports.js`, `import ${name} from './${name}.js';`)
+  })
+
+  components.forEach(({ api, name }) => {
+    fs.appendFileSync(`${directory}/imports.js`, `Vue.component(${name}.name, ${name});`)
+  })
+}
+
 module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
   const apis = collectApis(apiPath)
@@ -11,9 +28,10 @@ module.exports = function (appDir) {
   const targetFile = `${appDir}/.quasar-ide-helper.js`
   fs.writeFileSync(targetFile,
     'import Vue from \'vue\'\n')
+  const componentsDir = `${appDir}/.quasar-ide-helper`
 
   const components = apis.filter(({ api }) => api.type === 'component')
-  components.forEach(({ api, name }) => fs.appendFileSync(targetFile, generateComponent(name, api)))
+  writeComponents(componentsDir, components)
 
   const directives = apis.filter(({ api }) => api.type === 'directive')
   directives.forEach(({ name, api }) => fs.appendFileSync(targetFile, directive(name, api)))

@@ -8,11 +8,11 @@ module.exports = {
 
 function component (name, api) {
   return `
-Vue.component('${name}', {
+export default {
   name: '${name}',
   props: {${vueProps(api.props)}
   }
-})
+}
 `
 }
 

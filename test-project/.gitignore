@@ -22,3 +22,4 @@ yarn-error.log*
 # Generated ide-helper files
 .quasar-ide-helper.js
 .quasar-ide-helper.css
+.quasar-ide-helper
