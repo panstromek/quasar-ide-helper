@@ -11,6 +11,7 @@
     "yarn": ">= 1.6.0"
   },
   "dependencies": {
+    "fs-extra": "^7.0.1",
     "xml-escape": "^1.1.0"
   },
   "devDependencies": {
