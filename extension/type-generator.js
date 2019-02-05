@@ -2,28 +2,19 @@ const fs = require('fs')
 const propComment = require('./utils/comments').propComment
 const { generateComponent } = require('./generateComponent')
 const typeComment = require('./utils/comments').typeComment
+const collectApis = require('./collectApis')
 
 module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
-  const apis = fs.readdirSync(apiPath)
+  const apis = collectApis(apiPath)
 
   const targetFile = `${appDir}/.quasar-ide-helper.js`
   fs.writeFileSync(targetFile,
     'import Vue from \'vue\'\n')
 
-  const injections = []
+  const injections = apis.filter(({ api }) => api.type === 'plugin')
 
-  apis.forEach(name => {
-    const api = require(`${apiPath}/${name}`)
-    if (name.endsWith('.json')) {
-      name = name.substring(0, name.length - 5)
-    }
-    if (api.type === 'plugin') {
-      injections.push({
-        name, api
-      })
-      return
-    }
+  apis.forEach(({ name, api }) => {
     if (api.type === 'component') {
       const componentDeclaration = generateComponent(name, api)
       fs.appendFileSync(targetFile, componentDeclaration)
