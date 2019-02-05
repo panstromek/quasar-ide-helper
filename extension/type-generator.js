@@ -1,31 +1,6 @@
 const fs = require('fs')
 const { toCamel } = require('./utils/casing')
 
-function generateInjections (targetFile, plugins) {
-  fs.appendFileSync(targetFile,
-    `
-  /**
-   * Quasar plugins injected to prototype:${plugins.map(({ name, api }) => {
-      if (!api.injection) {
-        return ``
-      }
-      return `
-   * ${api.injection}
-`
-    }).reduce((lines, line) => lines + line, ``)}
-   */
-  Vue.prototype.$q = {
-  `)
-  plugins.forEach(({ name, api }) => {
-    fs.appendFileSync(targetFile,
-      plugin(name, api))
-  })
-
-  fs.appendFileSync(targetFile,
-    `
-  }`)
-}
-
 module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
   const apis = fs.readdirSync(apiPath)
@@ -57,6 +32,31 @@ module.exports = function (appDir) {
       (generators[api.type] || (() => ``))(name, api))
   })
   generateInjections(targetFile, injections)
+}
+
+function generateInjections (targetFile, plugins) {
+  fs.appendFileSync(targetFile,
+    `
+  /**
+   * Quasar plugins injected to prototype:${plugins.map(({ name, api }) => {
+      if (!api.injection) {
+        return ``
+      }
+      return `
+   * ${api.injection}
+`
+    }).reduce((lines, line) => lines + line, ``)}
+   */
+  Vue.prototype.$q = {
+  `)
+  plugins.forEach(({ name, api }) => {
+    fs.appendFileSync(targetFile,
+      plugin(name, api))
+  })
+
+  fs.appendFileSync(targetFile,
+    `
+  }`)
 }
 
 function paramDoc (params) {
