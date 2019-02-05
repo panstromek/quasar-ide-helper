@@ -12,18 +12,13 @@ module.exports = function (appDir) {
   fs.writeFileSync(targetFile,
     'import Vue from \'vue\'\n')
 
-  const injections = apis.filter(({ api }) => api.type === 'plugin')
+  const components = apis.filter(({ api }) => api.type === 'component')
+  components.forEach(({ api, name }) => fs.appendFileSync(targetFile, generateComponent(name, api)))
 
-  apis.forEach(({ name, api }) => {
-    if (api.type === 'component') {
-      const componentDeclaration = generateComponent(name, api)
-      fs.appendFileSync(targetFile, componentDeclaration)
-    }
-    if (api.type === 'directive') {
-      fs.appendFileSync(targetFile,
-        directive(name, api))
-    }
-  })
+  const directives = apis.filter(({ api }) => api.type === 'directive')
+  directives.forEach(({ name, api }) => fs.appendFileSync(targetFile, directive(name, api)))
+
+  const injections = apis.filter(({ api }) => api.type === 'plugin')
   generateInjections(targetFile, injections)
 
   // Appendix
