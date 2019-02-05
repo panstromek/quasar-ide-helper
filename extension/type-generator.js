@@ -1,5 +1,7 @@
 const fs = require('fs')
-const { toCamel } = require('./utils/casing')
+const propComment = require('./utils/comments').propComment
+const { generateComponent } = require('./generateComponent')
+const typeComment = require('./utils/comments').typeComment
 
 module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
@@ -23,7 +25,7 @@ module.exports = function (appDir) {
       return
     }
     if (api.type === 'component') {
-      const componentDeclaration = component(name, api)
+      const componentDeclaration = generateComponent(name, api)
       fs.appendFileSync(targetFile, componentDeclaration)
     }
     if (api.type === 'directive') {
@@ -107,46 +109,6 @@ ${api.injection.substring(3)} : {
 `
 }
 
-function component (name, api) {
-  return `
-Vue.component('${name}', {
-  name: '${name}',
-  props: {${vueProps(api.props)}
-  }
-})
-`
-}
-
-function typeComment (type) {
-  if (Array.isArray(type)) {
-    type = type.toString().replace(/,/g, '|')
-  }
-  return type.replace(/Any/g, '*')
-}
-
-function generateVueType (type) {
-  if (Array.isArray(type)) {
-    return `[${type.toString()}]`
-  }
-  return type
-}
-
-function propComment (prop) {
-  return `
-    /**
-     * ${prop.desc}${prop.reactive ? ' (reactive)' : ''}
-     * @type {${typeComment(prop.type)}}
-     */`
-}
-
-function vueType (type) {
-  if (type === 'Any' || (Array.isArray(type) && type.includes('Any'))) {
-    return ``
-  }
-  return `
-      type: ${generateVueType(type)},`
-}
-
 function objectProps (props) {
   if (!props) {
     return ``
@@ -156,22 +118,6 @@ function objectProps (props) {
       return `${propComment(prop)}
     '${name}': {}`
     }).toString() + ','
-}
-
-function vueProps (props) {
-  if (!props) {
-    return ``
-  }
-  return Object.entries(props)
-    .map(([name, prop]) => {
-      const VueType = vueType(prop.type)
-      const required = prop.required ? `
-      required: true` : ``
-
-      return `${propComment(prop)}
-    ${toCamel(name)}: {${VueType}${required}
-    }`
-    })
 }
 
 function directive (name, api) {

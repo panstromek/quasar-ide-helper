@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
-    <q-btn label="" />
+    <q-btn v-go-back
   </q-page>
 </template>
 
@@ -10,6 +10,14 @@
 
 <script>
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+  methods: {
+  }
 }
 </script>
+
+<test lang="jest">
+  it('should work', () => {
+
+  })
+</test>
