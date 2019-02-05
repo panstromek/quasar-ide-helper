@@ -2,7 +2,6 @@ const fs = require('fs')
 const propComment = require('./utils/comments').propComment
 const { generateComponent } = require('./generateComponent')
 const typeComment = require('./utils/comments').typeComment
-const collectApis = require('./collectApis')
 
 function writeComponents (directory, components) {
   if (!fs.existsSync(directory)) {
@@ -21,26 +20,32 @@ function writeComponents (directory, components) {
   })
 }
 
-module.exports = function (appDir) {
-  const apiPath = `${appDir}/node_modules/quasar/dist/api`
-  const apis = collectApis(apiPath)
+function writeDirectives (dir, directives) {
+  const file = `${dir}/directives.js`
+  fs.writeFileSync(file, 'import Vue from \'vue\'\n')
+  directives.forEach(({ name, api }) => fs.appendFileSync(file, directive(name, api)))
+}
 
-  const targetFile = `${appDir}/.quasar-ide-helper.js`
-  fs.writeFileSync(targetFile,
-    'import Vue from \'vue\'\n')
-  const componentsDir = `${appDir}/.quasar-ide-helper`
-
-  const components = apis.filter(({ api }) => api.type === 'component')
-  writeComponents(componentsDir, components)
-
-  const directives = apis.filter(({ api }) => api.type === 'directive')
-  directives.forEach(({ name, api }) => fs.appendFileSync(targetFile, directive(name, api)))
-
-  const injections = apis.filter(({ api }) => api.type === 'plugin')
+function writeInjections (dir, injections) {
+  const targetFile = `${dir}/injections.js`
+  fs.writeFileSync(targetFile, `import Vue from 'vue';`)
   generateInjections(targetFile, injections)
 
-  // Appendix
-  fs.appendFileSync(targetFile, '\n\n')
+}
+
+module.exports = function (appDir, apis) {
+
+  const dir = `${appDir}/.quasar-ide-helper`
+
+  const components = apis.filter(({ api }) => api.type === 'component')
+  writeComponents(dir, components)
+
+  const directives = apis.filter(({ api }) => api.type === 'directive')
+  writeDirectives(dir, directives)
+
+  const injections = apis.filter(({ api }) => api.type === 'plugin' && api.injection)
+
+  writeInjections(dir, injections)
 }
 
 function generateInjections (targetFile, plugins) {

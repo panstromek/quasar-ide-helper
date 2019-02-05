@@ -1,3 +1,4 @@
+const toKebab = require('./utils/casing').toKebab
 const { propComment } = require('./utils/comments')
 const toCamel = require('./utils/casing').toCamel
 module.exports = {
@@ -8,6 +9,11 @@ module.exports = {
 
 function component (name, api) {
   return `
+/**
+ * Quasar ${name} component
+ * 
+ * @see {@link http://quasar-framework.com/vue-components/${toKebab(name.substring(1))}|Quasar Docs} (Generated link, may not always work)
+ */  
 export default {
   name: '${name}',
   props: {${vueProps(api.props)}
