@@ -5,12 +5,6 @@ module.exports = function (appDir) {
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
   const apis = fs.readdirSync(apiPath)
 
-  const generators = {
-    'component': component,
-    'plugin': plugin,
-    'directive': directive
-  }
-
   const targetFile = `${appDir}/.quasar-ide-helper.js`
   fs.writeFileSync(targetFile,
     'import Vue from \'vue\'\n')
@@ -28,10 +22,19 @@ module.exports = function (appDir) {
       })
       return
     }
-    fs.appendFileSync(targetFile,
-      (generators[api.type] || (() => ``))(name, api))
+    if (api.type === 'component') {
+      const componentDeclaration = component(name, api)
+      fs.appendFileSync(targetFile, componentDeclaration)
+    }
+    if (api.type === 'directive') {
+      fs.appendFileSync(targetFile,
+        directive(name, api))
+    }
   })
   generateInjections(targetFile, injections)
+
+  // Appendix
+  fs.appendFileSync(targetFile, '\n\n')
 }
 
 function generateInjections (targetFile, plugins) {
