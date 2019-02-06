@@ -13,18 +13,18 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0-alpha.0",
+    "@quasar/extras": "^1.0.0-alpha.1",
     "axios": "^0.18.0",
-    "quasar": "^1.0.0-alpha.0",
+    "quasar": "^1.0.0-alpha.24",
     "vue-i18n": "^7.3.3"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-alpha.14",
+    "@quasar/app": "^1.0.0-alpha.15",
     "@vue/eslint-config-standard": "^4.0.0",
     "quasar-app-extension-ide-helper": "link:../extension",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.13.0",
-    "eslint-loader": "^2.1.1",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.1.0",
     "strip-ansi": "=3.0.1"
   },

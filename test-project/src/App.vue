@@ -9,7 +9,6 @@ export default {
   name: 'App',
   methods: {
     name () {
-      this.$qq.fullscreen.
     }
   }
 }

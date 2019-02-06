@@ -11,12 +11,16 @@
       color="secondary"
       style="width:200px;"
       @click="$router.push('/')"
-    >Go back</q-btn>
+    >Go back
+    </q-btn>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Error404'
+  name: 'Error404',
+  props: {
+    bobo: Boolean
+  }
 }
 </script>
