@@ -15,7 +15,6 @@
     "xml-escape": "^1.1.0"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-alpha.14",
     "eslint": "^5.13.0"
   }
 }
