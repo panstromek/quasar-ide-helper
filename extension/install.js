@@ -5,17 +5,16 @@
  */
 
 const generate = require('./utils/type-generator')
-const generateCss = require('./generators/generateCss')
+const generateCss = require('./generators/css')
 const collectApis = require('./utils/collectApis')
-const generateTemplates = require('./generators/generateTemplates')
+const generateTemplates = require('./generators/templates')
 
 /**
  *
  * @param {{extId, quasarAppVersion, prompts, resolve, appDir}} api
  */
 module.exports = function ({ appDir }) {
-  generateCss(appDir) // This is kind of a workaround, but you can actually set this easily in IntelliJ - but I would
-
+  generateCss(appDir)
   const apis = collectApis(`${appDir}/node_modules/quasar/dist/api`)
   generate(appDir, apis)
   generateTemplates(apis, appDir)
