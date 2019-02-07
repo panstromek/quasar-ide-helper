@@ -14,20 +14,16 @@ module.exports = function (apis, targetDir) {
   // filter to components only
   apis
     .filter(({ api }) => api.type === 'component')
-    .filter(({ api }) => !!api.props) //WOrkaround?
+    .filter(({ api }) => !!api.props) // components without props are pointless to template
     .forEach(component => fs.appendFileSync(targetFile, createTemplates(component)))
 
   fs.appendFileSync(targetFile,
     '</templateSet>')
 }
 
-function createTemplates ({ name, api }) {
-  return preTemplate({ name, api })
-}
-
 function propsTemplate (props) {
   return Object.entries(props)
-    .filter(([name, prop]) => prop.type !== 'Boolean')
+    .filter(([name, prop]) => prop.type !== 'Boolean') // Don't need to generate boolean props
     .map(([name, prop]) => {
       const xmlVar = `<variable name="${toCamel(name)}" expression="" defaultValue="" alwaysStopAt="true"/>`
       if (prop.type === 'String') {
@@ -68,7 +64,7 @@ ${variables}
  * @param {{type: String, props: Object}} api
  * @return {string}
  */
-function preTemplate ({ name: rawName, api }) {
+function createTemplates ({ name: rawName, api }) {
   const kebabName = toKebab(rawName)
   const name = rawName.toLowerCase()
   const props = propsTemplate(api.props)
