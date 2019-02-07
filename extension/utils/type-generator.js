@@ -1,7 +1,7 @@
 const fs = require('fs')
-const propComment = require('./utils/comments').propComment
-const { generateComponent } = require('./generateComponent')
-const typeComment = require('./utils/comments').typeComment
+const propComment = require('./comments').propComment
+const { generateComponent } = require('../generators/generateComponent')
+const typeComment = require('./comments').typeComment
 
 function writeComponents (directory, components) {
   if (!fs.existsSync(directory)) {

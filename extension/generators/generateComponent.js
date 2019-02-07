@@ -1,6 +1,6 @@
-const toKebab = require('./utils/casing').toKebab
-const { propComment } = require('./utils/comments')
-const toCamel = require('./utils/casing').toCamel
+const toKebab = require('../utils/casing').toKebab
+const { propComment } = require('../utils/comments')
+const toCamel = require('../utils/casing').toCamel
 module.exports = {
   generateComponent (name, api) {
     return component(name, api)

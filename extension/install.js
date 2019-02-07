@@ -4,10 +4,10 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/InstallAPI.js
  */
 
-const generate = require('./type-generator')
-const generateCss = require('./generateCss')
-const collectApis = require('./collectApis')
-const generateTemplates = require('./generateTemplates')
+const generate = require('./utils/type-generator')
+const generateCss = require('./generators/generateCss')
+const collectApis = require('./utils/collectApis')
+const generateTemplates = require('./generators/generateTemplates')
 
 /**
  *

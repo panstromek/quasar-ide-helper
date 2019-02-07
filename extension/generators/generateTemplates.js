@@ -1,6 +1,6 @@
 const fs = require('fs')
 const escape = require('xml-escape')
-const { toCamel, toKebab } = require('./utils/casing')
+const { toCamel, toKebab } = require('../utils/casing')
 /**
  * Generate live templates
  * @param {[{name:String, api: Object}]} apis
