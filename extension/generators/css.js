@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 
 /**
  *
@@ -17,12 +17,10 @@ const fs = require('fs')
 module.exports = function (appDir) {
   const cssPath = `${appDir}/node_modules/quasar/dist`
   const files = fs.readdirSync(cssPath)
-  const targetCssFile = `${appDir}/.quasar-ide-helper.css`
-
-  fs.writeFileSync(targetCssFile, '')
+  const targetDir = `${appDir}/.quasar-ide-helper`
   files.forEach(filename => {
-    if (filename.endsWith('.min.css')) {
-      fs.appendFileSync(targetCssFile, fs.readFileSync(`${cssPath}/${filename}`))
+    if (filename.endsWith('.css') && !filename.endsWith('min.css')) {
+      fs.copyFileSync(`${cssPath}/${filename}`, `${targetDir}/${filename}`)
     }
   })
 }

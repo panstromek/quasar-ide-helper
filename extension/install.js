@@ -14,8 +14,8 @@ const generateTemplates = require('./generators/templates')
  * @param {{extId, quasarAppVersion, prompts, resolve, appDir}} api
  */
 module.exports = function ({ appDir }) {
-  generateCss(appDir)
   const apis = collectApis(`${appDir}/node_modules/quasar/dist/api`)
   generate(appDir, apis)
   generateTemplates(apis, appDir)
+  generateCss(appDir)
 }

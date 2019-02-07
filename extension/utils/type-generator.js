@@ -1,6 +1,6 @@
 const fs = require('fs')
 const propComment = require('./comments').propComment
-const { generateComponent } = require('../generators/generateComponent')
+const { generateComponent } = require('../generators/component')
 const typeComment = require('./comments').typeComment
 
 function writeComponents (directory, components) {
