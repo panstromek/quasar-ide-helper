@@ -10,6 +10,6 @@ module.exports = function (dir) {
     .filter(name => name.endsWith('.json'))
     .map(name => ({
       name: name.substring(0, name.length - 5),
-      api: require(`${dir}/${name}`)
+      api: JSON.parse(fs.readFileSync(`${dir}/${name}`))
     }))
 }
