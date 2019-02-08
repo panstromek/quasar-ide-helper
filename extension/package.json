@@ -16,6 +16,7 @@
     "@types/fs-extra": "^5.0.4"
   },
   "devDependencies": {
+    "@quasar/app": "^1.0.0-beta.0",
     "eslint": "^5.13.0"
   }
 }

@@ -15,19 +15,19 @@
     "ide-helper:templates": "node node_modules/quasar-app-extension-ide-helper/templates"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0-alpha.1",
+    "@quasar/extras": "^1.0.0",
     "axios": "^0.18.0",
-    "quasar": "^1.0.0-alpha.24",
+    "quasar": "^1.0.0-beta.0",
     "vue-i18n": "^7.3.3"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-alpha.15",
+    "@quasar/app": "^1.0.0-beta.0",
     "@vue/eslint-config-standard": "^4.0.0",
-    "quasar-app-extension-ide-helper": "link:../extension",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.13.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.1.0",
+    "quasar-app-extension-ide-helper": "link:../extension",
     "strip-ansi": "=3.0.1"
   },
   "engines": {
