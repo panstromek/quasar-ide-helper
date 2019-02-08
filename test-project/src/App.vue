@@ -12,7 +12,6 @@ export default {
      * @this {Vue}
      */
     name () {
-this.$q.fullscreen.exi
     }
   }
 }
