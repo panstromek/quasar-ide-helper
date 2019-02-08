@@ -8,7 +8,11 @@
 export default {
   name: 'App',
   methods: {
+    /**
+     * @this {Vue}
+     */
     name () {
+this.$q.fullscreen.exi
     }
   }
 }
