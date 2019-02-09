@@ -4,15 +4,13 @@
   "description": "Test project for ide-helper",
   "productName": "Ide Helper Test Project",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "panstromek",
+  "author": "Matyáš Racek",
   "private": true,
   "scripts": {
     "a": "quasar ext --add ide-helper --skip-pkg",
     "r": "quasar ext --remove ide-helper --skip-pkg",
     "lint": "eslint --ext .js,.vue src",
-    "test": "echo \"No test specified\" && exit 0",
-    "ide-helper:generate": "node node_modules/quasar-app-extension-ide-helper/generate",
-    "ide-helper:templates": "node node_modules/quasar-app-extension-ide-helper/templates"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
