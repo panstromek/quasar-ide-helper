@@ -1,7 +1,7 @@
 # Quasar Ide Helper
 This extension enables autocomplete and quick doc for for various features of Quasar framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily.
 
-This project is still in development, so expect missing features. Contributions welcome ;)
+This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue pls)
 
 ## Usage
 You need to have a Vue plugin installed in the IDE and Quasar of course.
@@ -46,7 +46,7 @@ Few things from op of my head
  - Type hints for complex types, enums etc are not implemented, yet
  - Auto-import - this one is pretty tricky, but it may work as some hack with webpack config. I couldn't found working example yet, though.
  - Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
- - Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how.
+ - Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how. I have a few ideas, though
  - Icons autocomplete - I'd love this ;) I have an idea how to do it, too ;)
  - ... see issues for more, I will track missing features there
  
