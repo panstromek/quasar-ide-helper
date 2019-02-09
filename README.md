@@ -4,7 +4,7 @@ This extension enables autocomplete and quick doc for for various features of Qu
 This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue first pls)
 
 ## Prerequisites
-You need to have a Vue plugin installed in the IDE and Quasar project of course.
+You need to have a Vue plugin installed in the IDE and Quasar 1.0 project of course.
 
 (Optional) It also helps to add Vue as a library in IDE, because Vue is not listed in Quasar project dependencies (settings->Languages & Frameworks -> JavaScript->Libraries->Add->(name it)-> click `+` -> attach directories-> choose `vue`,`vue-router` and `vuex` in node_modules)->OK away. Now IDEA should correctly resolve Vue methods and tags.
 
@@ -20,7 +20,7 @@ Now you can generate helper files
 quasar run ide-helper generate
 ```
 
-After that you should get autocomplete and quick-doc for Quasar components, their props, prototype injections,directives and CSS classes. Note that you won't get auto-import so you still need to import the files in the `quasar.conf.js` or locally from `quasar` (don't import from helper files, obviously). CSS addon also need to be in `quasar.conf.js`.
+After that you should get autocomplete (`ctrl+space`) and quick-doc(`ctrl+q`) for Quasar components, their props, prototype injections,directives and CSS classes. Note that you won't get auto-import so you still need to import the files in the `quasar.conf.js` or locally from `quasar` (don't import from helper files, obviously). CSS addons also need to be imported in `quasar.conf.js`.
 
 It's because this helper can't recognize if you imported the component globally with `quasar.conf.js` or you need a local import. I am still figuring out how to provide more help in this area but for now it's just this simple. True IDEA based auto-import will need a bit more clever hacking (help appreciated ;) ).
 
@@ -42,7 +42,7 @@ IDE-helper can also generate Live Templates for all components. If you want to g
 ```bash
 quasar run ide-helper templates
 ```
-> Important: This will generate a `.QuasarLiveTemplates.xml` file with extensions. Now you need to place this file in your IDEA config in the `templates` folder and restart the IDE. 
+**Important**: This will generate a `.QuasarLiveTemplates.xml` file with live templates. Now you need to place this file in your IDEA config in the `templates` folder and restart the IDE. 
 
 This is because IDEA doesn't support project-scoped templates unfortunately, so you need to put them inside the global config. For WebStorm it should be something like `./<user>/.WebStorm2018.3/system/jba_config/templates` where `<user>` is your home directory. For other JetBrains IDEs it should be similar. If you are not sure, look at: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
 
