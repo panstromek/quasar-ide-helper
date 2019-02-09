@@ -4,7 +4,7 @@
   "description": "Test project for ide-helper",
   "productName": "Ide Helper Test Project",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "panstromek <panstromek@seznam.cz>",
+  "author": "panstromek",
   "private": true,
   "scripts": {
     "a": "quasar ext --add ide-helper --skip-pkg",
