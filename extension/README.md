@@ -18,7 +18,7 @@ Now you can generate helper files
 ```bash
 quasar ide-helper generate
 ```
-After that you should get autocomplete and quick-doc for Quasar components, their props, prototype injections and directives. Note that you won't get autoimport so you still need to import the files in the `quasar.conf.js` or locally from `quasar` (don't import from helper files, obviously). 
+After that you should get autocomplete and quick-doc for Quasar components, their props, prototype injections,directives and CSS classes. Note that you won't get auto-import so you still need to import the files in the `quasar.conf.js` or locally from `quasar` (don't import from helper files, obviously). CSS addon also need to be in `quasar.conf.js`.
 
 It's because this helper can't recognize if you imported the component globally with `quasar.conf.js` or you need a local import. I am still figuring out how to provide more help in this area but for now it's just this simple. True IDEA based auto-import will need a bit more clever hacking (help appreciated ;) ).
 
