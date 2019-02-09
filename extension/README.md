@@ -1,7 +1,7 @@
 # Quasar Ide Helper
-This extension enables autocomplete and quick doc for for various features of Quasar framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily.
+This extension enables autocomplete and quick doc for for various features of Quasar framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
 
-This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue pls)
+This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue first pls)
 
 ## Usage
 You need to have a Vue plugin installed in the IDE and Quasar of course.
@@ -21,6 +21,20 @@ quasar ide-helper generate
 After that you should get autocomplete and quick-doc for Quasar components, their props, prototype injections,directives and CSS classes. Note that you won't get auto-import so you still need to import the files in the `quasar.conf.js` or locally from `quasar` (don't import from helper files, obviously). CSS addon also need to be in `quasar.conf.js`.
 
 It's because this helper can't recognize if you imported the component globally with `quasar.conf.js` or you need a local import. I am still figuring out how to provide more help in this area but for now it's just this simple. True IDEA based auto-import will need a bit more clever hacking (help appreciated ;) ).
+
+## Better Injection Autocomplete
+Injection `$q` is too ambiguous so you won't get such a good autocomplete for it, partly because Vue plugin in IDEA doesn't properly recognize Vue instance in Vue files. You can make the autocomplete correct by annotating method with jsdoc `@this` comment like this:
+```vue
+  methods: {
+    /**
+     * @this {Vue}
+     */
+    method () {
+      this.$q. // You will get correct autocomplete for quasar injections here
+    }
+  }
+```
+This is good for finding out what is possible but it's cumbersome to do for every method. That's why the ide-helper adds "fake" injection `$qq`, which is identical to `$q` but usually unique in Quasar projects, so idea will autocomplete it correctly everywhere. If you actually want to use this injection, just create a plugin and assign it in there like this `Vue.prototype.$qq = Vue.prototype.$q`.
 
 ## Live Templates
 IDE-helper can also generate Live Templates for all components. If you want to generate Live Templates (Snippets), use this command first:
@@ -54,4 +68,4 @@ Few things from op of my head
 This extension is primarily focused on v1.0, because it uses its json-api files but not everyone can migrate right away, so I plan to add at least basic support for v0.17, I already have a POC for a generator, but I want to integrate it more smoothly into the project.
 
 ## Thanks
-Thanks to @jpgilchrist for an earlier research in `this` issue and useful insights. Very big thanks to ...... who noticed how to trick IDEA into indexing the component correctly - I am a bit sad that I haven't noticed this before as I could do something like this earlier and save myself (and others) a lot of development time. Also big thanks to Quasar and its contributors ;)
+Thanks to [@jpgilchrist](https://github.com/jpgilchrist) for the research in [this](https://github.com/quasarframework/quasar/issues/2224) issue and useful insights. Very big thanks to @hwb who noticed and wrote [here](https://forum.quasar-framework.org/topic/2322/how-to-import-quasar-components-to-use-vue-code-completion-in-intellij-idea-webstorm/2) how to trick IDEA into indexing the component - I am a bit sad that I haven't found this before as I could do something like this earlier and save myself (and others) a lot of development time. Also big thanks to [Quasar](https://github.com/quasarframework/quasar/) and its contributors ;)
