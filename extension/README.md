@@ -22,7 +22,7 @@ After that you should get autocomplete and quick-doc for Quasar components, thei
 
 It's because this helper can't recognize if you imported the component globally with `quasar.conf.js` or you need a local import. I am still figuring out how to provide more help in this area but for now it's just this simple. True IDEA based auto-import will need a bit more clever hacking (help appreciated ;) ).
 
-### Live Templates
+## Live Templates
 IDE-helper can also generate Live Templates for all components. If you want to generate Live Templates (Snippets), use this command first:
 ```bash
 quasar run ide-helper templates
@@ -43,7 +43,7 @@ This is just an MVP but I can already see bunch of things that can be improved o
 Few things from op of my head
  - Autocomplete events as "fake" props - I will do this next release, it's easy
  - Support v-model in templates - Will do this, should be straightforward
- - Type hints for complex types, enums etc are not implemented
+ - Type hints for complex types, enums etc are not implemented, yet
  - Auto-import - this one is pretty tricky, but it may work as some hack with webpack config. I couldn't found working example yet, though.
  - Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
  - Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how.
