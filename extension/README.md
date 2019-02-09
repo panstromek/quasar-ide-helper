@@ -34,7 +34,6 @@ Injection `$q` is too ambiguous so you won't get such a good autocomplete for it
     }
   }
 ```
-This is good for finding out what is possible but it's cumbersome to do for every method. That's why the ide-helper adds "fake" injection `$qq`, which is identical to `$q` but usually unique in Quasar projects, so idea will autocomplete it correctly everywhere. If you actually want to use this injection, just create a plugin and assign it in there like this `Vue.prototype.$qq = Vue.prototype.$q`.
 
 ## Live Templates
 IDE-helper can also generate Live Templates for all components. If you want to generate Live Templates (Snippets), use this command first:
