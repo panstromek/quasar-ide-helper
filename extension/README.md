@@ -48,7 +48,7 @@ Few things from op of my head
  - Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
  - Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how.
  - Icons autocomplete - I'd love this ;) I have an idea how to do it, too ;)
- - ... see issues for more
+ - ... see issues for more, I will track missing features there
  
 ## v0.17 Support
 This extension is primarily focused on v1.0, because it uses its json-api files but not everyone can migrate right away, so I plan to add at least basic support for v0.17, I already have a POC for a generator, but I want to integrate it more smoothly into the project.
