@@ -43,7 +43,7 @@ module.exports = function (api, ctx) {
     console.log(`For WebStorm it should be something like '../<user>/.WebStorm2018.3/system/jba_config/templates'`)
     console.log(`After you do this, restart the IDE, it will pick up them.`)
     console.log()
-    console.log('For other JetBrains IDE\'s it should be similar. If you are not sure, look at:')
+    console.log(`For other JetBrains IDEs it should be similar. If you are not sure, look at:`)
     console.log('https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs')
     console.log()
     console.log('I guess I could do this automatically, but I don\'t want mess with your system too much :D.')
