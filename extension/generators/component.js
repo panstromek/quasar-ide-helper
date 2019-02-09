@@ -12,7 +12,7 @@ function component (name, api) {
 /**
  * Quasar ${name} component
  * 
- * @see {@link http://quasar-framework.com/vue-components/${toKebab(name.substring(1))}|Quasar Docs} (Generated link, may not always work)
+ * @see {@link https://v1.quasar-framework.org/vue-components/${toKebab(name.substring(1))}|Quasar Docs} (Generated link, may not always work)
  */  
 export default {
   name: '${name}',
