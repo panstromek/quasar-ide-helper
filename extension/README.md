@@ -3,8 +3,12 @@ This extension enables autocomplete and quick doc for for various features of Qu
 
 This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue first pls)
 
+## Prerequisites
+You need to have a Vue plugin installed in the IDE and Quasar project of course.
+
+(Optional) It also helps to add Vue as a library in IDE, because Vue is not listed in Quasar project dependencies (settings->Languages & Frameworks -> JavaScript->Libraries->Add->(name it)-> click `+` -> attach directories-> choose `vue`,`vue-router` and `vuex` in node_modules)->OK away. Now IDEA should correctly resolve Vue methods and tags.
+
 ## Usage
-You need to have a Vue plugin installed in the IDE and Quasar of course.
 
 Run this in a Quasar project folder
 ```bash
