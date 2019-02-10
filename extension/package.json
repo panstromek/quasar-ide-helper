@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-ide-helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Quasar framework extension which enables IDE features like autocomplete by generating helper files for IDE to index.",
   "author": "Matyáš Racek",
   "license": "MIT",
