@@ -73,3 +73,9 @@ This extension is primarily focused on v1.0, because it uses its json-api files 
 
 ## Thanks
 Thanks to [@jpgilchrist](https://github.com/jpgilchrist) for the research in [this](https://github.com/quasarframework/quasar/issues/2224) issue and useful insights. Very big thanks to @hwb who noticed and wrote [here](https://forum.quasar-framework.org/topic/2322/how-to-import-quasar-components-to-use-vue-code-completion-in-intellij-idea-webstorm/2) how to trick IDEA into indexing the component - I am a bit sad that I haven't found this before as I could do something like this earlier and save myself (and others) a lot of development time. Also big thanks to [Quasar](https://github.com/quasarframework/quasar/) and its contributors ;)
+
+## License
+
+Copyright (c) 2019-present Matyáš Racek>
+
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
