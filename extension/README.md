@@ -76,6 +76,6 @@ Thanks to [@jpgilchrist](https://github.com/jpgilchrist) for the research in [th
 
 ## License
 
-Copyright (c) 2019-present Matyáš Racek>
+Copyright (c) 2019-present Matyáš Racek
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
