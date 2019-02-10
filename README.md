@@ -1,5 +1,5 @@
 # Quasar Ide Helper
-This extension enables autocomplete and quick doc for for various features of Quasar framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
+This extension enables autocomplete and quick doc for various features of Quasar Framework 1.0 in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
 
 This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue first pls)
 
@@ -57,15 +57,16 @@ Second type of templates leverages a feature in IDEA (and other editors, too) wh
 ## Roadmap + Contributions
 This is just an MVP but I can already see bunch of things that can be improved or added. If you have an idea for a feature or a clever IDE hack, post an issue so we can discuss and add it ;) 
 
-Few things from op of my head
- - Autocomplete events as "fake" props - I will do this next release, it's easy
- - Support v-model in templates - Will do this, should be straightforward
- - Type hints for complex types, enums etc are not implemented, yet
- - Auto-import - this one is pretty tricky, but it may work as some hack with webpack config. I couldn't found working example yet, though.
- - Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
- - Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how. I have a few ideas, though
- - Icons autocomplete - I'd love this ;) I have an idea how to do it, too ;)
- - ... see issues for more, I will track missing features there
+A few things off the top of my head
+ - [ ] Autocomplete events as "fake" props - I will do this next release, it's easy
+ - [ ] Support v-model in templates - will do this, should be straightforward
+ - [ ] Type hints for complex types, enums etc are not implemented, yet
+ - [ ] Auto-import - this one is pretty tricky, but it may work as some hack with webpack config. I couldn't find a working example yet, though.
+ - [ ] Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
+ - [ ] Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how. I have a few ideas, though
+ - [ ] Icons autocomplete - I'd love this ;) I have an idea how to do it, too ;)
+
+... see issues for more, I will track missing features there
  
 ## v0.17 Support
 This extension is primarily focused on v1.0, because it uses its json-api files but not everyone can migrate right away, so I plan to add at least basic support for v0.17, I already have a POC for a generator, but I want to integrate it more smoothly into the project.
