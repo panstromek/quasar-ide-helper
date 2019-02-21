@@ -7,6 +7,17 @@ module.exports = {
   }
 }
 
+function vueEvents (events = {}) {
+  return Object.entries(events)
+    .map(([name, event]) => {
+      return `
+    /**
+     * ${event.desc}
+     */      
+    '@${name}': '',`
+    }).join('\n')
+}
+
 function component (name, api) {
   return `
 /**
@@ -16,7 +27,7 @@ function component (name, api) {
  */  
 export default {
   name: '${name}',
-  props: {${vueProps(api.props)}
+  props: {${vueEvents(api.events)}${vueProps(api.props)}
   }
 }
 `
