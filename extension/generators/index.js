@@ -1,10 +1,16 @@
 const fs = require('fs')
 const directive = require('./directive').directive
 const generateInjections = require('./injections').generateInjections
-const { generateComponent } = require('./component')
+const { generateComponents } = require('./component')
 
 function writeComponents (directory, components) {
-  components.forEach(({ api, name }) => fs.writeFileSync(`${directory}/${name}.js`, generateComponent(name, api)))
+  components.forEach(({ api, name }) => {
+    generateComponents(name, api)
+      .forEach(([name, data]) => {
+        return fs.writeFileSync(`${directory}/${name}.js`, data)
+      })
+
+  })
 
   fs.writeFileSync(`${directory}/imports.js`, `import Vue from 'vue';`)
 
