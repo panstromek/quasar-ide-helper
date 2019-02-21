@@ -30,12 +30,12 @@ function paramDoc (params = []) {
     .map(([name, param]) => {
       const paramName = param.required ? name : `[${name}]`
       return `
-     * @param {${typeComment(param.type)}} ${paramName} ${param.desc}`
+     * @param {${typeComment(param)}} ${paramName} ${param.desc}`
     }).join('')
 }
 
 function returns (returns = { type: undefined, desc: '' }) {
-  return `@returns {${typeComment(returns.type)}} ${returns.desc}`
+  return `@returns {${typeComment(returns)}} ${returns.desc}`
 }
 
 function pluginMethods (methods = []) {

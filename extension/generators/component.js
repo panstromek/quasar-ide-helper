@@ -9,8 +9,8 @@ module.exports = {
 
 function eventParams (params = {}) {
   return Object.entries(params)
-    .map(([name, { type, desc, definition }]) => {
-      return `     * @param {${typeComment(type, definition)}} ${name} ${desc} `
+    .map(([name, api]) => {
+      return `     * @param {${typeComment(api)}} ${name} ${api.desc} `
     }).join('\n')
 }
 
