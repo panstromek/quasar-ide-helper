@@ -54,6 +54,19 @@ function vueProps (props) {
     return ``
   }
   return Object.entries(props)
+
+  // Duplicate prop for each enum value
+    .map(([name, prop]) => {
+
+      /// For now only for strings - We can try to handle numbers later
+      if (prop.type === 'String' && prop.values) {
+        return [[name, prop],
+          ...prop.values.map(val => [`'${name}="${val}" '`, { ...prop }])]
+      }
+      return [[name, prop]]
+    })
+
+    .flat(1)
     .map(([name, prop]) => {
       const VueType = vueType(prop.type)
       const required = prop.required ? `
