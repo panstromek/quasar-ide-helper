@@ -1,10 +1,17 @@
 const toKebab = require('../utils/casing').toKebab
-const { propComment } = require('../utils/comments')
+const { typeComment, propComment } = require('../utils/comments')
 const toCamel = require('../utils/casing').toCamel
 module.exports = {
   generateComponent (name, api) {
     return component(name, api)
   }
+}
+
+function eventParams (params = {}) {
+  return Object.entries(params)
+    .map(([name, { type, desc, definition }]) => {
+      return `     * @param {${typeComment(type, definition)}} ${name} ${desc} `
+    }).join('\n')
 }
 
 function vueEvents (events = {}) {
@@ -13,8 +20,9 @@ function vueEvents (events = {}) {
       return `
     /**
      * ${event.desc}
+${eventParams(event.params)}
      */      
-    '@${name}': '',`
+    '@${name}': function (${Object.keys(event.params || {})}) {},`
     }).join('\n')
 }
 

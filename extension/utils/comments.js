@@ -1,5 +1,5 @@
 const me = module.exports = {
-  typeComment (type) {
+  typeComment (type, definition) {
     if (Array.isArray(type)) {
       type = type.toString().replace(/,/g, '|')
     }
