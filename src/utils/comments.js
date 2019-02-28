@@ -16,10 +16,10 @@ const me = module.exports = {
       .flat(1)
       .map(type => {
         if (type === 'Object' && definition) {
-          return Object.entries(definition)
+          return `{${Object.entries(definition)
             .map(([name, api]) => {
-              return `{${name} : ${me.typeComment(api)}}`
-            }).join(', ')
+              return `${name} : ${me.typeComment(api)}`
+            }).join(', ')}}`
         }
         return type
       })
