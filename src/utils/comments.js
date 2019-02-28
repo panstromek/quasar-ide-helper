@@ -12,10 +12,7 @@ const me = module.exports = {
         }
       }).filter((t, i, arr) => arr.lastIndexOf(t) === i).join('|')
     }
-    if (Array.isArray(type)) {
-      type = type.join('|')
-    }
-    return type && type.replace(/Any/g, '*')
+    return [type].flat(1).join('|').replace(/Any/g, '*')
   },
   propComment (prop) {
     return `

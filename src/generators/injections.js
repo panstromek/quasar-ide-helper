@@ -35,7 +35,8 @@ function paramDoc (params = []) {
 }
 
 function returns (returns = { type: undefined, desc: '' }) {
-  return `@returns {${typeComment(returns)}} ${returns.desc}`
+  const returnType = typeComment(returns)
+  return `@returns ${returnType && `{${returnType}}`} ${returns.desc}`
 }
 
 function pluginMethods (methods = []) {
