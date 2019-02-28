@@ -12,7 +12,19 @@ const me = module.exports = {
         }
       }).filter((t, i, arr) => arr.lastIndexOf(t) === i).join('|')
     }
-    return [type].flat(1).join('|').replace(/Any/g, '*')
+    return [type]
+      .flat(1)
+      .map(type => {
+        if (type === 'Object' && definition) {
+          return Object.entries(definition)
+            .map(([name, api]) => {
+              return `{${name} : ${me.typeComment(api)}}`
+            }).join(', ')
+        }
+        return type
+      })
+      .join('|')
+      .replace(/Any/g, '*')
   },
   propComment (prop) {
     return `
