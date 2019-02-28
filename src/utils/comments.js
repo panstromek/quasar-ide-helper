@@ -13,7 +13,7 @@ const me = module.exports = {
       }).filter((t, i, arr) => arr.lastIndexOf(t) === i).join('|')
     }
     if (Array.isArray(type)) {
-      type = type.toString().replace(/,/g, '|')
+      type = type.join('|')
     }
     return type && type.replace(/Any/g, '*')
   },
