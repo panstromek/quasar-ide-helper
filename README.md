@@ -63,9 +63,9 @@ Second type of templates leverages a feature in IDEA (and other editors, too) wh
 This is just an MVP but I can already see bunch of things that can be improved or added. If you have an idea for a feature or a clever IDE hack, post an issue so we can discuss and add it ;) 
 
 A few things off the top of my head
- - [ ] Autocomplete events as "fake" props - I will do this next release, it's easy
+ - [x] Autocomplete events as "fake" props - I will do this next release, it's easy
  - [ ] Support v-model in templates - will do this, should be straightforward
- - [ ] Type hints for complex types, enums etc are not implemented, yet
+ - [x] Type hints for complex types, enums etc are not implemented, yet
  - [ ] Auto-import - this one is pretty tricky, but it may work as some hack with webpack config. I couldn't find a working example yet, though.
  - [ ] Vue, Vuex and Vue-router are not properly recognized (You can add them in settings though), I want to do something cool with these, stay tuned ;)
  - [ ] Limit props in templates - some templates generate bunch of props which are not always useful, so it would be nice to limit them somehow, but its not really clear how. I have a few ideas, though
