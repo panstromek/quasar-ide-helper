@@ -1,4 +1,9 @@
 # Quasar Ide Helper
+
+> WARNING
+>
+> This app extension works only for `@quasar/app - 1.0.0-beta.9` and higher.
+
 This extension enables autocomplete and quick doc for various features of Quasar Framework 1.0 in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
 
 This project is still in development, so expect missing features. Contributions welcome ;) (but open an issue first pls)
