@@ -17,7 +17,7 @@ You need to have a Vue plugin installed in the IDE and Quasar 1.0 project of cou
 
 Run this in a Quasar project folder
 ```bash
-quasar ext --add ide-helper
+quasar ext add ide-helper
 ```
 
 Now you can generate helper files
