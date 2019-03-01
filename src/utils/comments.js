@@ -1,3 +1,5 @@
+const { flatter } = require('./helpers')
+
 const me = module.exports = {
   typeComment ({ type, desc, definition, values, examples }) {
     if (values) {
@@ -13,7 +15,7 @@ const me = module.exports = {
       }).filter((t, i, arr) => arr.lastIndexOf(t) === i).join('|')
     }
     return [type]
-      .flat(1)
+      .reduce(flatter, [])
       .map(type => {
         if (type === 'Object' && definition) {
           return `{${Object.entries(definition)

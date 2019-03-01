@@ -1,3 +1,4 @@
+const { flatter } = require('../utils/helpers')
 const toKebab = require('../utils/casing').toKebab
 const { typeComment, propComment } = require('../utils/comments')
 const toCamel = require('../utils/casing').toCamel
@@ -54,7 +55,6 @@ function vueProps (props) {
     return ``
   }
   return Object.entries(props)
-
   // Duplicate prop for each enum value
     .map(([name, prop]) => {
 
@@ -65,8 +65,7 @@ function vueProps (props) {
       }
       return [[name, prop]]
     })
-
-    .flat(1)
+    .reduce(flatter, [])
     .map(([name, prop]) => {
       const VueType = vueType(prop.type)
       const required = prop.required ? `
