@@ -49,7 +49,7 @@ quasar run ide-helper templates
 ```
 **Important**: This will generate a `.QuasarLiveTemplates.xml` file with live templates. Now you need to place this file in your IDEA config in the `templates` folder and restart the IDE. 
 
-This is because IDEA doesn't support project-scoped templates unfortunately, so you need to put them inside the global config. For WebStorm it should be something like `./<user>/.WebStorm2018.3/system/jba_config/templates` where `<user>` is your home directory. For other JetBrains IDEs it should be similar. If you are not sure, look at: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+This is because IDEA doesn't support project-scoped templates unfortunately, so you need to put them inside the global config. For WebStorm it should be something like `./<user>/.WebStorm2018.3/config/jba_config/templates` where `<user>` is your home directory. For other JetBrains IDEs it should be similar. If you are not sure, look at: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
 
 ### How templates work
  
