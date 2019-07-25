@@ -1,5 +1,9 @@
 # Quasar Ide Helper
 
+> NOTE
+>
+> WebStorm team is working on an official support for Quasar and various other Vue frameworks so this extension will be redundant soon (hopefully). Right now it still provides a bit more features than native support, though ( EG. Quick Doc with `ctrl-q`). Few things are better in native already (Boolean attributes are completed correctly without `=""`)
+
 > WARNING
 >
 > This app extension works only for `@quasar/app - 1.0.0-beta.9` and higher.
