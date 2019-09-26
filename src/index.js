@@ -19,6 +19,9 @@ module.exports = function (api, ctx) {
 
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
 
+  const { setupFakeWebPackConfig } = require('./generators/fake-wepack-config')
+  setupFakeWebPackConfig(appDir, api)
+
   api.registerCommand('generate', () => {
     console.log('Collecting API files...')
     const apis = collectApis(apiPath)
@@ -39,7 +42,7 @@ module.exports = function (api, ctx) {
     console.log()
     console.log('..............................................................')
     console.log('IMPORTANT !!!')
-    console.log(`To make live templates functional, you need to move the file into`) 
+    console.log(`To make live templates functional, you need to move the file into`)
     console.log(`'templates' in your IDE's global config directory.`)
     console.log(`For WebStorm it should be something like:`)
     console.log(`'../<user>/.WebStorm2018.3/system/jba_config/templates'`)
