@@ -23,4 +23,8 @@ module.exports = function (appDir) {
       fs.copyFileSync(`${cssPath}/${filename}`, `${targetDir}/${filename}`)
     }
   })
+
+  //Copy variable files
+  fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.sass`, `${targetDir}/variables.sass`)
+  fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.styl`, `${targetDir}/variables.styl`)
 }
