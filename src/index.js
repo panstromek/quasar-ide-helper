@@ -15,6 +15,7 @@ module.exports = function (api, ctx) {
   const generateCss = require('./generators/css')
   const collectApis = require('./utils/collectApis')
   const generateTemplates = require('./generators/templates')
+  const { addVueCoreLibsToIdeaFolder } = require('./generators/idea-folder')
   const appDir = api.appDir
 
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
@@ -29,6 +30,8 @@ module.exports = function (api, ctx) {
     generate(appDir, apis)
     console.log('Generating CSS files...')
     generateCss(appDir)
+    console.log('Adding Vue core libs as libraries in .idea folder')
+    addVueCoreLibsToIdeaFolder(appDir)
     console.log('Generated - Enjoy ;)')
   })
 
