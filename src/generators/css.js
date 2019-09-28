@@ -1,5 +1,4 @@
-const fs = require('fs-extra')
-
+const fs = require('fs')
 /**
  *
  * Generates css files from all CSS in Quasar repo.
