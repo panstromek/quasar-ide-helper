@@ -13,8 +13,8 @@ module.exports.setupFakeWebPackConfig = function (appDir, api) {
     }
 
     api.extendWebpack((cfg) => {
-      console.log('ide-helper - generating fake webpack config ')
       if (!fs.existsSync(`${appDir}/webpack.config.js`)) {
+        console.log('ide-helper - generating fake webpack config ')
         fs.writeFileSync(`${appDir}/webpack.config.js`, `
 /* eslint-disable */
 /**
