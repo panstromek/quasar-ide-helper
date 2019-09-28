@@ -12,7 +12,15 @@ module.exports.setupFakeWebPackConfig = function (appDir, api) {
       fs.unlinkSync(configPath)
     }
 
-    api.extendWebpack((cfg) => {
+    api.extendWebpack(cfg => {
+      // TODO detect if webpack config changed
+      // Right now we just simply don't do anything if the file exist,
+      // because this code runs on every project change
+      // and we don't want to regenerate that file all the time
+      //
+      // We should have some mechanism to check if
+      // webpack config changed and regenerate the file if needed
+      // Right now we only regenerate this when user deletes it
       if (!fs.existsSync(`${appDir}/webpack.config.js`)) {
         console.log('ide-helper - generating fake webpack config ')
         fs.writeFileSync(`${appDir}/webpack.config.js`, `
@@ -22,6 +30,10 @@ module.exports.setupFakeWebPackConfig = function (appDir, api) {
  *
  * This file is generated to help WebStorm resolve Webpack aliases. It is never run in the app.
  * If you need to extend your webpack config, put your code in quasar.conf.js into extendWebpack function
+ *
+ * If you changed your WebPack config, you can delete this file. It will be regenerated again with up to date config
+ *
+ * Next line is picked up by ide-helper, don't change it:
  * generated-by-ide-helper
  */
 module.exports = ${JSON.stringify(cfg)}
