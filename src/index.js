@@ -23,7 +23,15 @@ module.exports = function (api, ctx) {
   const { setupFakeWebPackConfig } = require('./generators/fake-wepack-config')
   setupFakeWebPackConfig(appDir, api)
 
-  api.registerCommand('generate', () => {
+  const quasarVersion = api.getPackageVersion('quasar')
+  const ideHelperVersion = api.getPackageVersion('quasar-app-extension-ide-helper')
+  const persistentConfig = api.getPersistentConf()
+  if (persistentConfig.lastQuasarVersion !== quasarVersion ||
+    persistentConfig.lastIdeHelperVersion !== ideHelperVersion) {
+    generateAll()
+  }
+
+  function generateAll () {
     console.log('Collecting API files...')
     const apis = collectApis(apiPath)
     console.log('Generating components, directives and injections...')
@@ -36,7 +44,13 @@ module.exports = function (api, ctx) {
     console.log('')
     console.log('Note: You may need to close and reopen the project for some changes to take effect.')
     console.log('If you don\'t see changes even then, try to run the script without opened project.')
-  })
+    api.mergePersistentConf({
+      lastQuasarVersion: api.getPackageVersion('quasar'),
+      lastIdeHelperVersion: api.getPackageVersion('quasar-app-extension-ide-helper')
+    })
+  }
+
+  api.registerCommand('generate', generateAll)
 
   api.registerCommand('templates', () => {
     console.log('Collecting API files...')
