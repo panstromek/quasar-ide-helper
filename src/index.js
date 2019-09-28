@@ -33,6 +33,9 @@ module.exports = function (api, ctx) {
     console.log('Adding Vue core libs as libraries in .idea folder')
     addVueCoreLibsToIdeaFolder(appDir)
     console.log('Generated - Enjoy ;)')
+    console.log('')
+    console.log('Note: You may need to close and reopen the project for some changes to take effect.')
+    console.log('If you don\'t see changes even then, try to run the script without opened project.')
   })
 
   api.registerCommand('templates', () => {
