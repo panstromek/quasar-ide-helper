@@ -8,7 +8,7 @@ module.exports.addVueCoreLibsToIdeaFolder = function (appDir) {
     fs.mkdirSync(`${ideaPath}/libraries`)
   }
 
-  fs.writeFileSync(appDir + '/.idea/libraries/vue-generated-by-ide-helper.xml', `
+  fs.writeFileSync(appDir + '/.idea/libraries/vue_generated_by_ide_helper.xml', `
 <component name="libraryTable">
   <library name="vue-generated-by-ide-helper" type="javaScript">
     <properties>
