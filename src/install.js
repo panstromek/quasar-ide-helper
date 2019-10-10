@@ -18,12 +18,16 @@ module.exports = function (api) {
     const path = api.appDir + '/.gitignore'
     let gitignore = fs.existsSync(path) ? fs.readFileSync(path).toString() : '\n'
 
+    let append = ''
+
     if (!gitignore.match(/^.quasar-ide-helper/gm)) {
-      gitignore += '\n.quasar-ide-helper\n'
+      append += '\n.quasar-ide-helper\n'
     }
     if (!gitignore.match(/^webpack\.config\.js/gm)) {
-      gitignore += '\nwebpack.config.js\n'
+      append += '\nwebpack.config.js\n'
     }
-    fs.writeFileSync(path, gitignore)
+    if (append) {
+      fs.appendFileSync(path, append)
+    }
   }
 }
