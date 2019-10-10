@@ -8,6 +8,12 @@
  */
 
 module.exports = function () {
-  return []
-
+  return [
+    {
+      name: 'addToGitignore',
+      type: 'confirm',
+      message: 'Add generated files to .gitignore?',
+      default: true
+    }
+  ]
 }
