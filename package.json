@@ -15,7 +15,6 @@
     "xml-escape": "^1.1.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.0.0",
     "eslint": "^6.0.1"
   }
 }
