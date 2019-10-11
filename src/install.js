@@ -12,7 +12,7 @@ const fs = require('fs')
  */
 module.exports = function (api) {
   generateIfNeeded(api, api.appDir)
-  if (api.prompts.addToGitignore) {
+  if (api.prompts.addToGitIgnore) {
     console.log('Adding generated files to .gitignore.')
 
     const path = api.appDir + '/.gitignore'

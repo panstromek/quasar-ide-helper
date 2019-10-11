@@ -10,7 +10,7 @@
 module.exports = function () {
   return [
     {
-      name: 'addToGitignore',
+      name: 'addToGitIgnore',
       type: 'confirm',
       message: 'Add generated files to .gitignore?',
       default: true
