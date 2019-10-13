@@ -1,6 +1,6 @@
 const collectApis = require('./utils/collectApis')
 const generateTemplates = require('./generators/templates')
-const { setupFakeWebPackConfig } = require('./generators/fake-wepack-config')
+const { setupFakeWebPackConfig } = require('./generators/fake-webpack-config')
 const { generateAll, generateIfNeeded } = require('./generators/common')
 
 /**
