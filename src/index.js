@@ -15,6 +15,9 @@ const { generateAll, generateIfNeeded } = require('./generators/common')
  * @param ctx
  */
 module.exports = function (api, ctx) {
+  if (api.ctx.prod) {
+    return
+  }
   const appDir = api.appDir
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
 
