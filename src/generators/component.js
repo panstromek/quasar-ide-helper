@@ -61,7 +61,7 @@ function vueProps (props) {
       /// For now only for strings - We can try to handle numbers later
       if (prop.type === 'String' && prop.values) {
         return [[name, prop],
-          ...prop.values.map(val => [`'${name}="${val}"'`, { ...prop }])]
+          ...prop.values.map(val => [`'${name}="${val}"'`, { ...prop, type:'Boolean' }])]
       }
       return [[name, prop]]
     })
