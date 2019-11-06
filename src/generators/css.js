@@ -24,6 +24,10 @@ module.exports = function (appDir) {
   })
 
   //Copy variable files
-  fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.sass`, `${targetDir}/variables.sass`)
-  fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.styl`, `${targetDir}/variables.styl`)
+  if (fs.existsSync(`${appDir}/node_modules/quasar/src/css/variables.sass`)) {
+    fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.sass`, `${targetDir}/variables.sass`)
+  }
+  if (fs.existsSync(`${appDir}/node_modules/quasar/src/css/variables.styl`)) {
+    fs.copyFileSync(`${appDir}/node_modules/quasar/src/css/variables.styl`, `${targetDir}/variables.styl`)
+  }
 }
