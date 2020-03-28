@@ -10,8 +10,18 @@ module.exports.generateAll = generateAll
 function generateIfNeeded (api, appDir) {
   const quasarVersion = api.getPackageVersion('quasar')
   const ideHelperVersion = api.getPackageVersion('quasar-app-extension-ide-helper')
-  const persistentConfig = api.getPersistentConf()
-  if (persistentConfig.lastQuasarVersion !== quasarVersion ||
+  let persistentConfig
+  const configFilePath = `${appDir}/.quasar-ide-helper/ide-helper-config.json`
+  if (fs.existsSync(configFilePath)) {
+    try {
+      persistentConfig = JSON.parse(fs.readFileSync(configFilePath).toString())
+    } catch (e) {
+      console.error('Failed to parse ide helper config file, regenerating everything from scratch.')
+    }
+  }
+  if (
+    !persistentConfig ||
+    persistentConfig.lastQuasarVersion !== quasarVersion ||
     persistentConfig.lastIdeHelperVersion !== ideHelperVersion ||
     !fs.existsSync(`${appDir}/.quasar-ide-helper`)
   ) {
@@ -34,8 +44,8 @@ function generateAll (api) {
   console.log('')
   console.log('Note: You may need to close and reopen the project for some changes to take effect.')
   console.log('If you don\'t see changes even then, try to run the script without opened project.')
-  api.mergePersistentConf({
+  fs.writeFileSync(`${appDir}/.quasar-ide-helper/ide-helper-config.json`, JSON.stringify({
     lastQuasarVersion: api.getPackageVersion('quasar'),
     lastIdeHelperVersion: api.getPackageVersion('quasar-app-extension-ide-helper')
-  })
+  }))
 }
