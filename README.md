@@ -1,6 +1,6 @@
 # Quasar Ide Helper
 
-This extension enables autocomplete and quick doc for various features of Quasar Framework 1.0 in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
+This extension enables autocomplete and quick doc for various features of Quasar Framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
 
 > NOTE
 >
@@ -9,7 +9,7 @@ This extension enables autocomplete and quick doc for various features of Quasar
 
 ## Prerequisites
 
-You need to have some JetBrains IDE (WebStorm, IntelliJ etc.) with Vue plugin installed and Quasar 1.0 project.
+You need to have some JetBrains IDE (WebStorm, IntelliJ etc.) with Vue plugin installed and Quasar project. Only versions >=1.0 are supported.
 
 ## Installation & Usage
 
