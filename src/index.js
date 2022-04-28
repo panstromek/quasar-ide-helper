@@ -2,7 +2,6 @@ const collectApis = require('./utils/collectApis')
 const generateTemplates = require('./generators/templates')
 const { setupFakeWebPackConfig } = require('./generators/fake-webpack-config')
 const { generateAll, generateIfNeeded } = require('./generators/common')
-const fs = require('fs')
 
 /**
  * Quasar App Extension index/runner script
@@ -22,7 +21,7 @@ module.exports = function (api, ctx) {
   const appDir = api.appDir
   const apiPath = `${appDir}/node_modules/quasar/dist/api`
 
-  if (api.hasWebpack) {
+  if (api.hasPackage('@quasar/app-webpack') || api.hasPackage('@quasar/app')) {
     setupFakeWebPackConfig(appDir, api)
   }
   generateIfNeeded(api, appDir)
