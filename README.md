@@ -2,10 +2,9 @@
 
 This extension enables autocomplete and quick doc for various features of Quasar Framework in WebStorm and other JetBrains IDEs by generating bunch of files that IDEA can index easily. It was inspired by [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper), which does the similar thing for Laravel.
 
-> NOTE
->
-> WebStorm team is working on an official support for Quasar and various other Vue frameworks so this extension will be redundant soon (hopefully). Right now it still provides a bit more features than native support, though ( EG. Quick Doc with `ctrl-q`). Few things are better in native already (Boolean attributes are completed correctly without `=""`)
+## Current status
 
+Note that this extension is mostly not necessary anymore, because WebStorm supports most of the features natively already. If you encounter something which is not yet supported by WebStorm but it's provided by this extension, please let us now so we can report it to JetBrains and make this extension obsolete sooner.
 
 ## Prerequisites
 
